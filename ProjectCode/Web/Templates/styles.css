@@ -476,3 +476,8 @@ span.file-link input {
     width: 100%;
   }
 }
+.body-container{
+	background-image: url("images/storage-cloud.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
