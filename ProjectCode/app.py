@@ -40,6 +40,7 @@ def index():
 @app.route('/upload-file')
 def call_page_upload():
 	return render_template('upload.html')
+
 '''
 -----------------------------------------------------------
 				DOWNLOAD KEY-FILE
