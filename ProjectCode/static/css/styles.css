@@ -90,11 +90,6 @@ h1 {
   flex-direction: column;
   height: calc(100vh - 170px);
 }
-.body-container{
-	background-image: url("images/storage-cloud.jpg");
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-}
 .body-container i.fa.fa-cloud {
     font-size: 100px;
     color: #2196f3;
@@ -480,4 +475,9 @@ span.file-link input {
     float: none;
     width: 100%;
   }
+}
+.body-container{
+	background-image: url("../images/storage-cloud.jpg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
 }
