@@ -479,5 +479,5 @@ span.file-link input {
 .body-container{
 	background-image: url("../images/storage-cloud.jpg");
 	background-repeat: no-repeat;
-	background-attachment: fixed;
+	background-size: cover;
 }
