@@ -6,16 +6,16 @@ import DH
 import pickle
 import random
 
-UPLOAD_FOLDER = './media/text-files/'
-UPLOAD_KEY = './media/public-keys/'
-ALLOWED_EXTENSIONS = set(['txt'])
+UploadFolder = './media/text-files/'
+UploadKey = './media/public-keys/'
+AllowedExtensions = set(['txt'])
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UploadFolder'] = UploadFolder
 
 def allowed_file(filename):
 	return '.' in filename and \
-		filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+		filename.rsplit('.', 1)[1].lower() in AllowedExtensions
 
 '''
 -----------------------------------------------------------
@@ -52,12 +52,12 @@ def download_public_key(username):
 		for file in files:
 			list = file.split('-')
 			if list[0] == username:
-				filename = UPLOAD_KEY+file
+				filename = UploadKey+file
 				return send_file(filename, attachment_filename='publicKey.pem',as_attachment=True)
 
 @app.route('/file-directory/retrieve/file/<filename>')
 def download_file(filename):
-	filepath = UPLOAD_FOLDER+filename
+	filepath = UploadFolder+filename
 	if(os.path.isfile(filepath)):
 		return send_file(filepath, attachment_filename='fileMessage-thrainSecurity.txt',as_attachment=True)
 	else:
@@ -84,7 +84,7 @@ def downloads_pk():
 # Build file directory
 @app.route('/file-directory/')
 def download_f():
-	for root,dirs,files in os.walk(UPLOAD_FOLDER):
+	for root,dirs,files in os.walk(UploadFolder):
 		if(len(files) == 0):
 			return render_template('file-list.html',msg='Aww snap! No file found in directory')
 		else:
@@ -111,7 +111,7 @@ def upload_file():
 			return 'NO FILE SELECTED'
 		if file:
 			filename = secure_filename(file.filename)
-			file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+			file.save(os.path.join(app.config['UploadFolder'], file.filename))
 			return post_upload_redirect()
 		return 'Invalid File Format !'
 
@@ -156,7 +156,7 @@ def register_user():
 	pickle.dump(usernamelist,pickleObj)
 	pickleObj.close()
 	#Updating a new public key for a new user
-	filename = UPLOAD_KEY+username+'-'+secondname.upper()+firstname.lower()+'-PublicKey.pem'
+	filename = UploadKey+username+'-'+secondname.upper()+firstname.lower()+'-PublicKey.pem'
 	# Generate public key and save it in the file generated
 	publickey = DH.generate_public_key(privatekey)
 	fileObject = open(filename,"w")
