@@ -1,0 +1,68 @@
+<html>
+<head>
+		<!-- Latest compiled and minified CSS -->
+	  <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}" />
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Character encoding scheme -->
+		<meta charset="UTF-8"> 
+		<title></title>
+		<style type="text/css">
+			button {
+				color: black;
+				width: 10vw;
+			}
+			button:hover {
+				background-color: darkgrey;
+				width: 10vw;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="main-container"> 
+<div class="header-container-wrapper">
+  <div class="header-container">
+    <div class="custom-header-bg">
+      <div class="page-center">
+        <div class="logo">Enhanced Cloud Security</div>
+        <div class="navigation">
+          <ul>
+            <li><a href="upload-file" class="button click-upload"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Upload</a></li>
+            <li><a href="register" class="button open-progress"><i class="fa fa-tasks" aria-hidden="true"></i>Register User</a></li>
+            <li><a href="public-key-directory" class="button open-progress"><i class="fa fa-download" aria-hidden="true"></i>Download Key</a></li>
+            <li><a href="file-directory" class="button open-progress"><i class="fa fa-download" aria-hidden="true"></i>file-directory</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body-container-wrapper">
+<div class="page-center">
+	<h1> Enhanced Cyber Security </h1><br><br>
+			<h3>Your one-time generated private key is:<br><br> {{privatekey}}</h3>
+			<br>
+			<p style="color: red; font-size: 30px"><b>Please Copy and save this key.as we are not storing this for security reason.</b></p><br>
+			<a href="/"><button class="btn" style="font-size:20px">Home</button></a>
+		
+</div>
+</div>
+
+<div class="footer-container-wrapper">
+  <div class="footer-container">
+    <div class="custom-footer-bg">
+      <div class="page-center">
+        <p>@Copyright CS623-Team pi2868 & qv6963</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+	</body>
+</html>

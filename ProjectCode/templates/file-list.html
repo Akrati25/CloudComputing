@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Latest compiled and minified CSS -->
+		<link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<!-- jQuery library -->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!-- Latest compiled JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- Character encoding scheme -->
+		<meta charset="UTF-8">
+		<title>Files on the cloud</title> 
+	</head>
+<body>
+<div class="main-container"> 
+<div class="header-container-wrapper">
+  <div class="header-container">
+    <div class="custom-header-bg">
+      <div class="page-center">
+        <div class="logo">Enhanced Cloud Security</div>
+        <div class="navigation">
+          <ul>
+            <li><a href="{{ url_for('index') }}" class="button click-upload"><i class="fa fa-cloud-upload" aria-hidden="true"></i>Go to Home Page</a></li>
+            <!--li><a href="register" class="button open-progress"><i class="fa fa-tasks" aria-hidden="true"></i>Register User</a></li>
+            <li><a href="public-key-directory" class="button open-progress"><i class="fa fa-download" aria-hidden="true"></i>Download Key</a></li>
+            <li><a href="file-directory" class="button open-progress"><i class="fa fa-download" aria-hidden="true"></i>file-directory</a></li-->
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="body-container-wrapper">
+<div class="page-center">
+	{% if msg!=''%}
+		<h3 style="color: red">{{msg}}</h3>
+	{%else%}
+		<h3>File Directory</h3>
+		{% for itr in range(length):%}
+			<li><button onclick="document.getElementById('myForm').action = 'retrieve/file/{{list[itr]}}'" data-toggle="modal" data-target="#myConfirmation">{{list[itr]}}</button></li>
+		{% endfor%}
+	{%endif%}
+	
+	
+	<!-- Modal -->
+<div id="myConfirmation" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Confirm Your Download</h4>
+      </div>
+      <div class="modal-body">
+        <form id="myForm" action="" method="POST">
+				<input name="privateKey" type="text" placeholder = "Enter Key" required width="120vw" size="70"> <br >
+				<br>
+				<input type="submit" class="btn btn-lg upload">
+		</form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+</div>
+</div>
+
+<div class="footer-container-wrapper">
+  <div class="footer-container">
+    <div class="custom-footer-bg">
+      <div class="page-center">
+        <p>@Copyright CS623-Team pi2868 & qv6963</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+	
+</body>
+</html>
